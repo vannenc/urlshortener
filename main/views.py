@@ -1,6 +1,6 @@
 #! /usr/local/env python
 from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import Http404
 from django.views.generic import TemplateView
 from django.views.generic import RedirectView
 from main.models import TinyUrl
@@ -22,7 +22,7 @@ class TinyUrlRedirectView(RedirectView):
                 return tinyurl.url
 
             except Exception, e:
-                return None
+                raise Http404
 
         else:
             return None
