@@ -34,7 +34,7 @@ def create_tinyurl(request):
     if create_form.is_valid() is True:
         new_tinyurl = TinyUrl(url=create_form.cleaned_data['url'])
         new_tinyurl.save()
-        return HttpResponse(request.build_absolute_uri("%s" % new_tinyurl.tiny))
+        return HttpResponse(request.build_absolute_uri(new_tinyurl.tiny))
 
     else:
         return HttpResponse('Nope')
