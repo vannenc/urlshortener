@@ -18,5 +18,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^create$', 'main.views.create_tinyurl', name='create_tinyurl'),
     url(r'^(?P<tinyurl>[a-zA-Z0-9]+)$', TinyUrlRedirectView.as_view(), name='tinyurl'),
+    
 )

@@ -1,9 +1,11 @@
 #! /usr/local/env python
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.views.generic import RedirectView
 from main.models import TinyUrl
+from main.forms import TinyUrlForm
 
 
 class IndexView(TemplateView):
@@ -25,5 +27,14 @@ class TinyUrlRedirectView(RedirectView):
             raise Http404
 
 
-def index(request):
-    return HttpResponse('Hello!')
+def create_tinyurl(request):
+    """ """
+    create_form = TinyUrlForm(request.POST)
+
+    if create_form.is_valid() is True:
+        new_tinyurl = TinyUrl(url=create_form.cleaned_data['url'])
+        new_tinyurl.save()
+        return HttpResponse(request.build_absolute_uri("%s" % new_tinyurl.tiny))
+
+    else:
+        return HttpResponse('Nope')
