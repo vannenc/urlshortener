@@ -31,7 +31,7 @@ class TinyUrlRedirectView(RedirectView):
 
 def create_tinyurl(request):
     """ """
-    create_form = TinyUrlForm(request.POST)
+    create_form = TinyUrlForm(request.GET)
     output = {'url': '', 'error': '', 'tiny': '', 'status': ''}
 
     if create_form.is_valid() is True:
@@ -45,8 +45,13 @@ def create_tinyurl(request):
         output['error'] = create_form.errors['url'][0]
         output['status'] = 'NOK'  # not ok
 
-    if request.GET.get('format', None) is None:
-        return HttpResponse(json.dumps(output))
+    if request.GET.get('format', None) is not None:
+
+        if request.GET.get('callback', None) is None:
+            return HttpResponse(json.dumps(output))
+
+        else:
+            return HttpResponse("%s(%s)" % (request.GET.get('callback'), json.dumps(output)))
 
     else:
         return HttpResponse(json.dumps(output))
