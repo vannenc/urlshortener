@@ -1,4 +1,6 @@
 {% url create_tinyurl  as tinyurl %}
+{% load static %}
+{% get_static_prefix as url_static %}
 <html>
 <head>
     <title>hello</title>
@@ -6,6 +8,7 @@
 <body>
 <h1>hello</h1>
 
+<img src="{{ url_static}}wall.jpg" />
 <form action="{{ tinyurl }}" method="post">
     {% csrf_token %} 
     <p>
