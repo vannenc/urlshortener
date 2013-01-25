@@ -1,7 +1,9 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
 from django.views.generic import RedirectView
 from main.views import IndexView
 from main.views import TinyUrlRedirectView
+
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -22,3 +24,11 @@ urlpatterns = patterns('',
     url(r'^(?P<tinyurl>[a-zA-Z0-9]+)$', TinyUrlRedirectView.as_view(), name='tinyurl'),
     
 )
+
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+   )

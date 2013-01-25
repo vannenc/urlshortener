@@ -7,6 +7,8 @@ from django.views.generic import RedirectView
 from main.models import TinyUrl
 from main.forms import TinyUrlForm
 
+import json
+
 
 class IndexView(TemplateView):
     """ index page """
@@ -30,11 +32,21 @@ class TinyUrlRedirectView(RedirectView):
 def create_tinyurl(request):
     """ """
     create_form = TinyUrlForm(request.POST)
+    output = {'url': '', 'error': '', 'tiny': '', 'status': ''}
 
     if create_form.is_valid() is True:
         new_tinyurl = TinyUrl(url=create_form.cleaned_data['url'])
         new_tinyurl.save()
-        return HttpResponse(request.build_absolute_uri(new_tinyurl.tiny))
+        output['tiny'] = request.build_absolute_uri(new_tinyurl.tiny)
+        output['url'] = new_tinyurl.url
+        output['status'] = 'OK'
 
     else:
-        return HttpResponse('Nope')
+        output['error'] = create_form.errors['url'][0]
+        output['status'] = 'NOK'  # not ok
+
+    if request.GET.get('format', None) is None:
+        return HttpResponse(json.dumps(output))
+
+    else:
+        return HttpResponse(json.dumps(output))
