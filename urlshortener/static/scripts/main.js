@@ -23,7 +23,7 @@ jQuery(function(){
             'url' : formurl,
             'type' : 'post',
             'dataType' : 'json',
-            'data' : $.param($('form#form-create input')), //{'url' : url.val(), 'format' : 'js'},
+            'data' : $.param($('form#form-create input')) + '&format=json', //{'url' : url.val(), 'format' : 'js'},
 
             'error': function(xhr, textstatus, error){
                 errorsContainer.html('');

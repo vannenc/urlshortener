@@ -32,9 +32,9 @@
 
             <form action="{{ url_tiny }}" method="post" id="form-create">
                 {% csrf_token %} 
-                <p id="url"><input type="text" name="url" placeholder="enter your url here" id="url-text"></p>
+                <p id="url"><input type="text" name="url" placeholder="enter your url here" id="url-text" value="{{ output.url }}"></p>
                
-               {% if output.error != "" %}
+               {% if output.error %}
                     <div id="errors" style="display:block;">
                         <p>{{ output.error}}</p>
                     </div>
@@ -44,7 +44,8 @@
                     </div>
                 {% endif %}
 
-                {% if output.tiny != "" %}
+
+                {% if output.tiny %}
                 <div id="success" style="display:block;">
                     <p>Shorten link</p>
                     <input type="text" name="tiny" value="{{output.tiny}}" >
@@ -52,7 +53,7 @@
                 {% else %}
                     <div id="success">
                         <p>Shorten link</p>
-                        <input type="text" name="tiny" value="{{output.tiny}}" >
+                        <input type="text" name="tiny" value="" >
                     </div>
                 {% endif%}
                 <p id="submit-button"><input type="submit" name="submit" value="Shorten"></p>
