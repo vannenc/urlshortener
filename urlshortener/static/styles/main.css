@@ -1,0 +1,193 @@
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+@import url(http://fonts.googleapis.com/css?family=Kavoon);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+@import url(reset.css);
+/* ==========================================
+    main
+ ===========================================*/
+/* line 13, ../../app/styles/main.scss */
+a, a:hover {
+  text-decoration: none;
+}
+
+/* line 14, ../../app/styles/main.scss */
+html {
+  background: url(../images/gray_jean.jpg) repeat;
+}
+
+/* line 15, ../../app/styles/main.scss */
+body {
+  background: transparent;
+}
+
+/* line 17, ../../app/styles/main.scss */
+input {
+  outline: none;
+}
+
+/* line 19, ../../app/styles/main.scss */
+p#logo {
+  text-align: center;
+}
+
+/* line 20, ../../app/styles/main.scss */
+p#logo a {
+  line-height: 50px;
+  font-family: Pacifico, serif;
+  font-size: 36px;
+  text-shadow: 0 -2px #949494, 0 2px 0 white;
+  color: #cbcbcb;
+  text-align: center;
+}
+
+/* line 22, ../../app/styles/main.scss */
+::-webkit-input-placeholder {
+  color: #bbb;
+  padding: 0 10px;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 25px;
+  font-family: serif;
+}
+
+/* line 23, ../../app/styles/main.scss */
+::-moz-placeholder {
+  color: #bbb;
+  padding: 0 10px;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 25px;
+  font-family: serif;
+}
+
+/* firefox 19+ */
+/* ==========================================
+    Wrapper
+ ===========================================*/
+/* line 29, ../../app/styles/main.scss */
+div#wrapper {
+  width: 400px;
+  margin: 60px auto;
+}
+
+/* line 30, ../../app/styles/main.scss */
+p#url input {
+  border: none;
+  background: #fff;
+  -webkit-box-shadow: white 0 2px 0, 0 -2px 0 #efefef;
+  -moz-box-shadow: white 0 2px 0, 0 -2px 0 #efefef;
+  box-shadow: white 0 2px 0, 0 -2px 0 #efefef;
+  height: 25px;
+  width: 400px;
+  padding: 0 10px;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 25px;
+  font-family: serif;
+  color: #888;
+}
+
+/* line 32, ../../app/styles/main.scss */
+p#submit-button input {
+  border: none;
+  background: #449eb4;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 150px;
+  font-family: Kavoon, serif;
+  color: #e8eeef;
+  text-shadow: 0 1px 0 #333333;
+  -webkit-box-shadow: 4px 6px 0 #83b3c0;
+  -moz-box-shadow: 4px 6px 0 #83b3c0;
+  box-shadow: 4px 6px 0 #83b3c0;
+  -webkit-transition: 0.1s all ease-out;
+  -moz-transition: 0.1s all ease-out;
+  -o-transition: 0.1s all ease-out;
+  transition: 0.1s all ease-out;
+  margin: 30px auto;
+  display: block;
+}
+
+/* line 34, ../../app/styles/main.scss */
+p#submit-button input:active {
+  -webkit-box-shadow: inset 1px 2px 0 #83b3c0;
+  -moz-box-shadow: inset 1px 2px 0 #83b3c0;
+  box-shadow: inset 1px 2px 0 #83b3c0;
+}
+
+/* line 36, ../../app/styles/main.scss */
+div#errors {
+  display: none;
+  font-family: Droid Sans, sans-serif;
+}
+/* line 40, ../../app/styles/main.scss */
+div#errors p {
+  margin: 0 10px;
+  padding: 0 10px;
+  color: #999999;
+  font-size: 12px;
+  color: #c08a83;
+}
+
+/* line 43, ../../app/styles/main.scss */
+div#success {
+  display: none;
+}
+/* line 45, ../../app/styles/main.scss */
+div#success p {
+  font-family: Droid Serif, georgia, serif;
+  font-size: 14px;
+  color: #888;
+  margin: 5px 0;
+  font-style: italic;
+}
+/* line 47, ../../app/styles/main.scss */
+div#success input {
+  border: none;
+  background: #fff;
+  -webkit-box-shadow: white 0 2px 0, 0 -2px 0 #efefef;
+  -moz-box-shadow: white 0 2px 0, 0 -2px 0 #efefef;
+  box-shadow: white 0 2px 0, 0 -2px 0 #efefef;
+  height: 25px;
+  width: 400px;
+  padding: 0 10px;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 25px;
+  font-family: serif;
+  color: #888;
+  font-weight: bold;
+}
+
+/* line 50, ../../app/styles/main.scss */
+div#overlay {
+  width: 100%;
+  height: 100%;
+  background: white 50% 50% url(../images/load.gif) no-repeat;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
+  display: none;
+}
+
+/* line 53, ../../app/styles/main.scss */
+div#author p {
+  margin: 90px 0;
+  color: #bbb;
+  text-shadow: 0 1px white;
+  font-size: 12px;
+  font-family: Droid Sans, tahoma, sans-serif;
+  font-weight: normal;
+}
+/* line 54, ../../app/styles/main.scss */
+div#author p a, div#author p a:visited {
+  color: #83b3c0;
+  text-decoration: none;
+}

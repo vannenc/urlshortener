@@ -1,22 +1,86 @@
-{% url create_tinyurl  as tinyurl %}
+{% url create_tinyurl  as url_tiny %}
 {% load static %}
 {% get_static_prefix as url_static %}
-<html>
-<head>
-    <title>hello</title>
-</head>
-<body>
-<h1>hello</h1>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-<img src="{{ url_static}}wall.jpg" />
-<form action="{{ tinyurl }}" method="post">
-    {% csrf_token %} 
-    <p>
-        <label>Url</label>
-        <input type="text" name="url">
-    </p>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <p><input type="submit" value="Tinifier" name="submit"></p>
-</form>
-</body>
+        
+        <link rel="stylesheet" href="{{ url_static }}styles/main.css">
+        <script src="{{ url_static }}scripts/vendor/modernizr.min.js"></script>
+    </head>
+    <body>
+
+        <div id="overlay">
+            
+        </div>
+        <div id="wrapper">
+            
+            <p id="logo"><a href="">Url Shortener</a></p>
+
+
+
+            <form action="{{ url_tiny }}" method="post" id="form-create">
+                {% csrf_token %} 
+                <p id="url"><input type="text" name="url" placeholder="enter your url here" id="url-text"></p>
+               
+               {% if output.error != "" %}
+                    <div id="errors" style="display:block;">
+                        <p>{{ output.error}}</p>
+                    </div>
+                {% else %}
+                    <div id="errors">
+                        <p>{{ output.error}}</p>
+                    </div>
+                {% endif %}
+
+                {% if output.tiny != "" %}
+                <div id="success" style="display:block;">
+                    <p>Shorten link</p>
+                    <input type="text" name="tiny" value="{{output.tiny}}" >
+                </div>
+                {% else %}
+                    <div id="success">
+                        <p>Shorten link</p>
+                        <input type="text" name="tiny" value="{{output.tiny}}" >
+                    </div>
+                {% endif%}
+                <p id="submit-button"><input type="submit" name="submit" value="Shorten"></p>
+            </form>
+
+
+            <div id="author">
+                <p>Created by <a href="http://vannen.ws">Vannen Caremben</a>. Fork it on <a href="https://github.com/vannenc/urlshortener/">github</a></p>
+            </div>
+        </div>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ url_static }}scripts/vendor/jquery.min.js"><\/script>')</script>
+        <script type="text/javascript" src="{{ url_static }}scripts/main.js"></script>
+        
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
 </html>
