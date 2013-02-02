@@ -23,6 +23,7 @@ jQuery(function(){
             'url' : formurl,
             'type' : 'post',
             'dataType' : 'json',
+            'timeout' : 10000,
             'data' : $.param($('form#form-create input')) + '&format=json', //{'url' : url.val(), 'format' : 'js'},
 
             'error': function(xhr, textstatus, error){
