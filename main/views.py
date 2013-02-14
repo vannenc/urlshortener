@@ -47,7 +47,6 @@ def create_tinyurl(request):
         output['status'] = 'NOK'  # not ok
 
     if request.POST.get('format', None) is not None:
-
         return HttpResponse(json.dumps(output))
 
     else:
